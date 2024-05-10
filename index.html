@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const choice = ["Rock","Paper","Scissor"];
+        let playerScore = 0;
+        let computerScore = 0;
+        function getComputerChoice(){
+            return Math.floor(Math.random() * 3);
+        }
+        function getHumanChoice(){
+            return prompt("Enter 0,1,2 for Rock,Paper,Scissor");
+        }
+        function playRound(){
+            let humanChoice = getHumanChoice();
+            let computerChoice = getComputerChoice();
+            console.log(`you choose ${choice[humanChoice]} and the computer choose ${choice[computerChoice]}`)
+            if (humanChoice == computerChoice){
+                console.log("It's a tie!");
+
+            }
+            else if ((humanChoice > computerChoice)||(humanChoice == 0 && computerChoice == 2)){
+                console.log("You won!");
+                playerScore++;
+            }
+            else{
+                console.log("The computer won!");
+                computerScore++;
+            }   
+            console.log(`Computer score: ${computerScore}\nPlayer score: ${playerScore}`)
+        }
+
+        function game(noRounds){
+            let currentRound = 0;
+            while (noRounds > currentRound){
+                playRound();
+                currentRound++;
+            }
+            console.log("The game is finished:\n");
+            if (playerScore == computerScore){
+                console.log("No one wins... it's a tie.")
+            }
+            else if (playerScore > computerScore){
+                console.log("You are the winner!");
+            }
+            else {
+                console.log("The computer is the winner!");
+            }
+        }
+        let rounds = prompt("How many rounds would you like to play?");
+        game(rounds);
+           
+        
+    </script>
+</body>
+</html
